@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery TODo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main class="container">
+        <input type="text" id="input" placeholder="Add new Task" />
+        <ul>
+        </ul>
+    </main>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#input').change(function () {
+                let input = $(this).val();
+                $('ul').append('<li>' + input + '<i class="material-icons done">done</i> <i class="material-icons block">block</i>  </li>');
+                $(this).val('');
+            })
+        });
+
+        $('ul').on('click', '.block', function () {
+            $(this).parent('li').fadeOut(200);
+        });
+
+
+        $('ul').on('click', '.done', function () {
+            $(this).parent('li').toggleClass('checked');
+        })
+    </script>
+</body>
+</html>
